@@ -32,14 +32,16 @@ for key in model.state_dict():
 
     print(key)
 
-    
+# initialisation des poids
+
 trained_model = train_model(
     model,
     X_train,
     y_train,
     X_val,
     y_val,
-    device
+    device,
+    init_method="xavier"
 )
 
 evaluate_model(

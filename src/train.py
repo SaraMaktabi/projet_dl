@@ -1,5 +1,7 @@
 import torch
 import torch.nn as nn
+from utils import initialize_weights
+
 
 
 def train_model(
@@ -9,6 +11,7 @@ def train_model(
     X_val,
     y_val,
     device,
+    init_method="xavier",
     epochs=100,
     learning_rate=0.001
 ):
@@ -18,7 +21,8 @@ def train_model(
     # =====================================================
 
     model = model.to(device)
-
+    
+    initialize_weights(model, method=init_method)
     # =====================================================
     # Fonction de perte
     # =====================================================
