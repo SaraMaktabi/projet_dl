@@ -6,7 +6,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from train import train_model
-
+from lstm_model import LSTMModel
+from gru_model import GRUModel
 
 
 pairs = load_dataset("src/rnn/data/fra.txt")
@@ -101,3 +102,54 @@ train_model(
     device,
     epochs=10
 )
+
+print("\n===== LSTM =====\n")
+
+lstm_model = LSTMModel(
+    vocab_size=eng_vocab.count,
+    embedding_dim=128,
+    hidden_dim=256,
+    output_dim=fra_vocab.count
+).to(device)
+
+print(lstm_model)
+
+lstm_optimizer = optim.Adam(
+    lstm_model.parameters(),
+    lr=0.001
+)
+
+train_model(
+    lstm_model,
+    loader,
+    lstm_optimizer,
+    criterion,
+    device,
+    epochs=10
+)
+
+print("\n===== GRU =====\n")
+
+gru_model = GRUModel(
+    vocab_size=eng_vocab.count,
+    embedding_dim=128,
+    hidden_dim=256,
+    output_dim=fra_vocab.count
+).to(device)
+
+print(gru_model)
+
+gru_optimizer = optim.Adam(
+    gru_model.parameters(),
+    lr=0.001
+)
+
+train_model(
+    gru_model,
+    loader,
+    gru_optimizer,
+    criterion,
+    device,
+    epochs=10
+)
+
