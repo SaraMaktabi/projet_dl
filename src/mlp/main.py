@@ -1,9 +1,9 @@
-from data_preparation import prepare_data
-from model_sequential import create_sequential_model
-from model_custom import CustomMLP
-from train import train_model
-from evaluate import evaluate_model
-from load_model import load_model
+from mlp.data_preparation import prepare_data
+from mlp.model_sequential import create_sequential_model
+from mlp.model_custom import CustomMLP
+from mlp.train import train_model
+from mlp.evaluate import evaluate_model
+from mlp.load_model import load_model
 
 
 # =========================================================

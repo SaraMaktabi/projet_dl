@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from utils import initialize_weights
+from mlp.utils import initialize_weights
 
 
 

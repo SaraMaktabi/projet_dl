@@ -1,6 +1,6 @@
 import torch
-from model_sequential import create_sequential_model
-from model_custom import CustomMLP
+from mlp.model_sequential import create_sequential_model
+from mlp.model_custom import CustomMLP
 
 
 def load_model(model_type, device, path):
